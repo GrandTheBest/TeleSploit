@@ -248,12 +248,12 @@ async def main():
                         try:
                             from_user = await client.get_entity(message.from_id.user_id)
                             ID = message.from_id.user_id
-                            writer.writerow([message.text, message.is_reply, ID, "@"+from_user.username, date])
+                            writer.writerow([message.text, message.is_reply, ID, from_user.username, date])
                         except AttributeError:
                             try:
                                 from_user = await client.get_entity(message.peer_id.user_id)
                                 ID = message.peer_id.user_id
-                                writer.writerow([message.text, message.is_reply, ID, "@"+from_user.username, date])
+                                writer.writerow([message.text, message.is_reply, ID, from_user.username, date])
                             except AttributeError:
                                 writer.writerow([message.text, message.is_reply, 0, None, date])
                 else:
@@ -262,12 +262,12 @@ async def main():
                         try:
                             from_user = await client.get_entity(message.from_id.user_id)
                             ID = message.from_id.user_id
-                            writer.writerow([message.text, message.is_reply, ID, "@"+from_user.username, date])
+                            writer.writerow([message.text, message.is_reply, ID, from_user.username, date])
                         except AttributeError:
                             try:
                                 from_user = await client.get_entity(message.peer_id.user_id)
                                 ID = message.peer_id.user_id
-                                writer.writerow([message.text, message.is_reply, ID, "@"+from_user.username, date])
+                                writer.writerow([message.text, message.is_reply, ID, from_user.username, date])
                             except AttributeError:
                                 writer.writerow([message.text, message.is_reply, 0, None, date])
             print(gr+'[+] Members scraped successfully.\n' + wh)
