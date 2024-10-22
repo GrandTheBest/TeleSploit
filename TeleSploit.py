@@ -15,7 +15,7 @@ wh="\033[1;37m"
 toolname = "TeleSploit"
 inpt = "telesploit > "
 
-options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages"]
+options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap Photos"]
 
 api_id = 21414125
 api_hash = "7862c8301079da0b47934635785de0e5"
@@ -271,9 +271,42 @@ async def main():
                             except AttributeError:
                                 writer.writerow([message.text, message.is_reply, 0, None, date])
             print(gr+'[+] Members scraped successfully.\n' + wh)
+        elif int(s) == 6:
+            banner()
+            _messages = []
+            _dialogs = []
+
+            print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+
+            mode = input(wh+"\ntelesploit("+re+"scrapMessages"+wh+") > ")
+
+            if int(mode) == 0:
+                a = "username"
+                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+            elif int(mode) == 1:
+                a = "id"
+                target = input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > ")
+            else:
+                a = "username"
+                print("Invalid option. Selected by username")
+                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+
+            print(gr+'\n[+] Fetching Messages...'+wh)
+            time.sleep(1)
+            print(gr+'[+] Saving In file...'+wh)
+
+            if "@" in target:
+                async for message in client.iter_messages(target, reverse=True):
+                    if message.photo:
+                        await message.download_media('./' + str(target) + '/')
+            else:
+                async for message in client.iter_messages(int(target), reverse=True):
+                    if message.photo:
+                        await message.download_media('./' + str(target) + '/')
+
         else:
             banner()
             print("\nInvalid option\n")
 
 with client:
-    client.loop.run_until_complete(main()) # -1002060387348
+    client.loop.run_until_complete(main())
