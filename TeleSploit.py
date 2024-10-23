@@ -15,7 +15,7 @@ wh="\033[1;37m"
 toolname = "TeleSploit"
 inpt = "telesploit > "
 
-options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap Photos"]
+options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap photos", "Scrap videos"]
 
 api_id = 21414125
 api_hash = "7862c8301079da0b47934635785de0e5"
@@ -96,7 +96,7 @@ async def main():
              
             print(gr+'[+] Saving In file...')
             time.sleep(1)
-            with open("groupMem.csv","w",encoding='UTF-8') as f:
+            with open(f"{target_group.title}.csv","w",encoding='UTF-8') as f:
                 writer = csv.writer(f,delimiter=",",lineterminator="\n")
                 writer.writerow(['username','user id', 'access hash','name','group', 'group id'])
                 for user in all_participants:
@@ -154,7 +154,7 @@ async def main():
              
             print(gr+'[+] Saving In file...'+wh)
             time.sleep(1)
-            with open("channelMem.csv","w",encoding='UTF-8') as f:
+            with open(f"{target_channel.title}.csv","w",encoding='UTF-8') as f:
                 writer = csv.writer(f,delimiter=",",lineterminator="\n")
                 writer.writerow(['username','user id', 'access hash','name','channel', 'channel id'])
                 for user in all_participants:
@@ -225,18 +225,35 @@ async def main():
 
             if int(mode) == 0:
                 a = "username"
-                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapMessages/"+a+wh+") > @")
             elif int(mode) == 1:
                 a = "id"
-                target = input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > ")
+                target = input(wh+"\ntelesploit("+re+"scrapMessages/"+a+wh+") > ")
             else:
                 a = "username"
                 print("Invalid option. Selected by username")
-                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapMessages/"+a+wh+") > @")
 
             print(gr+'\n[+] Fetching Messages...'+wh)
             time.sleep(1)
-            with open(f"{target}.csv","w",encoding='UTF-8') as f:
+
+            _target = ""
+            title = ""
+
+            if "@" in target:
+                _target = await client.get_entity(target)
+            else:
+                _target = await client.get_entity(int(target))
+
+            try:
+                title = _target.title
+            except AttributeError:
+                if _target.last_name is not None:
+                    title = _target.first_name + " " + _target.last_name
+                else:
+                    title = _target.first_name
+
+            with open(f"{title}.csv","w",encoding='UTF-8') as f:
                 print(gr+'[+] Saving In file...'+wh)
                 time.sleep(1)
                 writer = csv.writer(f,delimiter=",",lineterminator="\n")
@@ -278,31 +295,96 @@ async def main():
 
             print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
 
-            mode = input(wh+"\ntelesploit("+re+"scrapMessages"+wh+") > ")
+            mode = input(wh+"\ntelesploit("+re+"scrapPhotos"+wh+") > ")
 
             if int(mode) == 0:
                 a = "username"
-                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapPhotos/"+a+wh+") > @")
             elif int(mode) == 1:
                 a = "id"
-                target = input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > ")
+                target = input(wh+"\ntelesploit("+re+"scrapPhotos/"+a+wh+") > ")
             else:
                 a = "username"
                 print("Invalid option. Selected by username")
-                target = "@" + input(wh+"\ntelesploit("+re+"sendMessage/"+a+wh+") > @")
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapPhotos/"+a+wh+") > @")
 
-            print(gr+'\n[+] Fetching Messages...'+wh)
+            print(gr+'\n[+] Fetching Photos...'+wh)
             time.sleep(1)
             print(gr+'[+] Saving In file...'+wh)
+
+
+            _target = ""
+            title = ""
+
+            if "@" in target:
+                _target = await client.get_entity(target)
+            else:
+                _target = await client.get_entity(int(target))
+
+            try:
+                title = _target.title
+            except AttributeError:
+                if _target.last_name is not None:
+                    title = _target.first_name + " " + _target.last_name
+                else:
+                    title = _target.first_name
 
             if "@" in target:
                 async for message in client.iter_messages(target, reverse=True):
                     if message.photo:
-                        await message.download_media('./' + str(target) + '/')
+                        await message.download_media('./' + title + '/')
             else:
                 async for message in client.iter_messages(int(target), reverse=True):
                     if message.photo:
-                        await message.download_media('./' + str(target) + '/')
+                        await message.download_media('./' + title + '/')
+        elif int(s) == 7:
+            banner()
+            _messages = []
+            _dialogs = []
+
+            print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+
+            mode = input(wh+"\ntelesploit("+re+"scrapVideos"+wh+") > ")
+
+            if int(mode) == 0:
+                a = "username"
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapVideos/"+a+wh+") > @")
+            elif int(mode) == 1:
+                a = "id"
+                target = input(wh+"\ntelesploit("+re+"scrapVideos/"+a+wh+") > ")
+            else:
+                a = "username"
+                print("Invalid option. Selected by username")
+                target = "@" + input(wh+"\ntelesploit("+re+"scrapVideos/"+a+wh+") > @")
+
+            print(gr+'\n[+] Fetching Videos...'+wh)
+            time.sleep(1)
+            print(gr+'[+] Saving In file...'+wh)
+
+            _target = ""
+            title = ""
+
+            if "@" in target:
+                _target = await client.get_entity(target)
+            else:
+                _target = await client.get_entity(int(target))
+
+            try:
+                title = _target.title
+            except AttributeError:
+                if _target.last_name is not None:
+                    title = _target.first_name + " " + _target.last_name
+                else:
+                    title = _target.first_name
+
+            if "@" in target:
+                async for message in client.iter_messages(target, reverse=True):
+                    if message.video:
+                        await message.download_media('./' + title + '/')
+            else:
+                async for message in client.iter_messages(int(target), reverse=True):
+                    if message.video:
+                        await message.download_media('./' + title + '/')
 
         else:
             banner()
