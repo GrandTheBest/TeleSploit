@@ -446,7 +446,7 @@ async def main():
                 else:
                     _target = await client.get_entity(int(target))
 
-                async for message in client.iter_messages(target):
+                if True:
                     if "@" in target:
                         async for message in client.iter_messages(target, reverse=True):
                             date = message.date.strftime("%Y-%m-%d %H:%M:%S")
