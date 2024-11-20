@@ -17,7 +17,7 @@ toolname = "TeleSploit"
 version = "v1.6 Beta 2"
 inpt = "telesploit > "
 
-options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap photos", "Scrap videos", "RealTime Messenger"]
+options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap photos", "Scrap videos", "RealTime Messenger", "Delete chat"]
 
 for_replace = ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"]
 
@@ -485,9 +485,34 @@ async def main():
                 while True:
                     msg = input(wh+"\ntelesploit("+re+"RealTimeMessenger/"+target+wh+") > ")
                     await client.send_message(_target, msg)
+            elif int(s) == 9:
+                banner()
+
+                chats.clear()
+
+                async for chat in client.iter_dialogs():
+                    chats.append(chat)
+
+                i = 0
+                for chat in chats:
+                    print(f"{gr}[{cy}{i}{gr}] {chat.title}{wh}")
+                    i += 1
+                
+                print(f"\n{wh}Choose the dialog.")
+                dialog = input(wh+"\ntelesploit("+re+"deleteChat/"+wh+") > ")
+                print("\nRemove for everyone? Yes or No. Default: No")
+                isRevoke = input(wh+"\ntelesploit("+re+"deleteChat/removeForEveryone"+wh+") > ")
+
+                if isRevoke.lower() == "yes":
+                    await client.delete_dialog(chats[int(dialog)].id, revoke=True)
+                else:
+                    await client.delete_dialog(chats[int(dialog)].id, revoke=False)
+
+                print(f"\n{gr}Dialog successfuly removed!{wh}\n")
             else:
                 banner()
                 print("\nInvalid option\n")
+                
 
 with client:
     client.loop.run_until_complete(main())
