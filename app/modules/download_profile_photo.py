@@ -18,7 +18,7 @@ async def download_profile_photo():
         target = "@" + input(wh+"\ntelesploit("+re+"downloadProfilePhoto/"+a+wh+") > @")
 
     if "@" not in target:
-        target = int(target)
+        target = int(target) 
 
     try:
         entity = await client.get_entity(target)
