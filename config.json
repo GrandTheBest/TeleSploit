@@ -1,0 +1,30 @@
+{
+    "name": "OpenTSP",
+    "author": "GrandTheBest",
+    "version": "Release v1.6: Structure Update!",
+    "repo": "https://github.com/GrandTheBest/TeleSploit",
+    "app": {
+        "config": {
+            "prompt": "OpenTSP > ",
+            "subscription": "OpenTSP - a utility for advanced interaction with Telegram",
+            "deny_chars": ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"],
+            "telegram_api": {
+                "api_id": 21414125,
+                "api_hash": "7862c8301079da0b47934635785de0e5"
+            }
+        },
+        "modules": {
+            "Test connection": "test_connection",
+            "Scrap members(Group)": "scrap_members_group",
+            "Scrap members(Channel)": "scrap_members_channel",
+            "Send message": "send_message",
+            "Scrap dialogs": "scrap_dialogs",
+            "Scrap messsages": "scrap_messages",
+            "Scrap images": "scrap_images",
+            "Scrap videos": "scrap_videos",
+            "RealTime Messenger": "realtime_messenger",
+            "Delete chat": "delete_chat",
+            "Delete message": "delete_message"
+        }
+    }
+}
