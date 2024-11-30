@@ -1,7 +1,7 @@
 {
     "name": "OpenTSP",
     "author": "GrandTheBest",
-    "version": "Release v1.6: Structure Update!",
+    "version": "Release v1.6.1: Structure Update!",
     "repo": "https://github.com/GrandTheBest/TeleSploit",
     "app": {
         "config": {
@@ -24,7 +24,10 @@
             "Scrap videos": "scrap_videos",
             "RealTime Messenger": "realtime_messenger",
             "Delete chat": "delete_chat",
-            "Delete message": "delete_message"
+            "Delete message": "delete_message",
+            "About me": "about_me",
+            "About user": "about_user",
+            "Download profile photo": "download_profile_photo"
         }
     }
 }

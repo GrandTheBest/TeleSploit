@@ -9,3 +9,6 @@ from app.modules.scrap_videos import scrap_videos
 from app.modules.realtime_messenger import realtime_messenger
 from app.modules.delete_chat import delete_chat
 from app.modules.delete_message import delete_message
+from app.modules.about_me import about_me
+from app.modules.about_user import about_user
+from app.modules.download_profile_photo import download_profile_photo

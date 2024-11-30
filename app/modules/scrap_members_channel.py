@@ -33,8 +33,6 @@ async def scrap_members_channel():
         all_participants = await client.get_participants(target_channel, aggressive=True)
     except ChatAdminRequiredError:
         print(re+"Error: you're not admin!"+wh)
-        client.disconnect()
-        sys.exit()
         
     print(gr+'[+] Saving In file...'+wh)
     time.sleep(1)

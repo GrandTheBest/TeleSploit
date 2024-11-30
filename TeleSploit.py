@@ -65,6 +65,15 @@ async def main():
             elif int(s) == 10:
                 banner()
                 await delete_message()
+            elif int(s) == 11:
+                banner()
+                await about_me()
+            elif int(s) == 12:
+                banner()
+                await about_user()
+            elif int(s) == 13:
+                banner()
+                await download_profile_photo()
             else:
                 banner()
                 print("\nInvalid option\n")
