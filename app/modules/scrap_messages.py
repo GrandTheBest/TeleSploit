@@ -4,7 +4,7 @@ async def scrap_messages():
     _messages = []
     _dialogs = []
 
-    print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+    print(wh+f'{lang["select_mode"]}:\n\n'+gr+'['+cy+'0'+gr+'] ' + f"{lang['by_username']}\n"+gr+'['+cy+'1'+gr+'] '+lang['by_id']+wh)
 
     mode = input(wh+"\ntelesploit("+re+"scrapMessages"+wh+") > ")
 
@@ -16,10 +16,10 @@ async def scrap_messages():
         target = input(wh+"\ntelesploit("+re+"scrapMessages/"+a+wh+") > ")
     else:
         a = "username"
-        print("Invalid option. Selected by username")
+        print(lang['invalid_option_selected_by_username'])
         target = "@" + input(wh+"\ntelesploit("+re+"scrapMessages/"+a+wh+") > @")
 
-    print(gr+'\n[+] Fetching Messages...'+wh)
+    print(gr+f'\n[+] {lang["fetching_messages"]}'+wh)
     time.sleep(1)
 
     _target = ""
@@ -48,7 +48,7 @@ async def scrap_messages():
                     title = title.replace(symbol, ".")
 
     with open(f"{title}.csv","w",encoding='UTF-8') as f:
-        print(gr+'[+] Saving In file...'+wh)
+        print(gr+f'[+] {lang["saving_in_file"]}'+wh)
         time.sleep(1)
         writer = csv.writer(f,delimiter=",",lineterminator="\n")
         writer.writerow(['text', 'is_reply', 'from_id', 'from_username', 'date'])
@@ -81,4 +81,4 @@ async def scrap_messages():
                         writer.writerow([message.text, message.is_reply, ID, from_user.username, date])
                     except AttributeError:
                         writer.writerow([message.text, message.is_reply, 0, None, date])
-    print(gr+'[+] Members scraped successfully.\n' + wh)
+    print(gr+f'[+] {lang["scrap_messages"]}\n' + wh)

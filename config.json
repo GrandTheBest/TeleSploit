@@ -1,13 +1,24 @@
 {
     "name": "OpenTSP",
     "author": "GrandTheBest",
-    "version": "Release v1.6.1: Structure Update!",
+    "version": "Release v1.7: Languages Update!",
     "repo": "https://github.com/GrandTheBest/TeleSploit",
     "app": {
         "config": {
+            "language": "en-US",
             "prompt": "OpenTSP > ",
             "subscription": "OpenTSP - a utility for advanced interaction with Telegram",
-            "deny_chars": ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"],
+            "deny_chars": [
+                "\\",
+                "/",
+                ":",
+                "*",
+                "?",
+                "\"",
+                "<",
+                ">",
+                "|"
+            ],
             "telegram_api": {
                 "api_id": 21414125,
                 "api_hash": "7862c8301079da0b47934635785de0e5"

@@ -1,4 +1,5 @@
 import json
+import codecs
 from art import tprint
 import os, sys
 import csv
@@ -25,13 +26,12 @@ dialogs = []
 
 with open("config.json", "r") as f:
     cfg = json.loads(f.read())
+    with codecs.open(f"app/languages/{cfg['app']['config']['language']}.json", "r", "utf_8_sig") as fa:
+        lang = json.loads(fa.read())
 
     toolname = cfg['name']
     version = cfg['version']
     prompt = cfg['app']['config']['prompt']
-    subscription = cfg['app']['config']['subscription']
-
-    options = cfg['app']['modules']
 
     # options = ["Test connection", "Scrap members(Group)", "Scrap members(Channel)", "Send message", "Scrap dialogs", "Scrap messsages", "Scrap photos", "Scrap videos", "RealTime Messenger", "Delete chat", "Delete message"]
 
@@ -39,5 +39,7 @@ with open("config.json", "r") as f:
 
     api_id = cfg['app']['config']['telegram_api']['api_id']
     api_hash = cfg['app']['config']['telegram_api']['api_hash']
+
+    translate = lang
 
 client = TelegramClient('cache', api_id, api_hash)

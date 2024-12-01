@@ -4,7 +4,7 @@ async def scrap_images():
     _messages = []
     _dialogs = []
 
-    print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+    print(wh+f'{lang["select_mode"]}:\n\n'+gr+'['+cy+'0'+gr+'] ' + f"{lang['by_username']}\n"+gr+'['+cy+'1'+gr+'] '+f'{lang["by_id"]}'+wh)
 
     mode = input(wh+"\ntelesploit("+re+"scrapImages"+wh+") > ")
 
@@ -16,12 +16,12 @@ async def scrap_images():
         target = input(wh+"\ntelesploit("+re+"scrapImages/"+a+wh+") > ")
     else:
         a = "username"
-        print("Invalid option. Selected by username")
+        print(lang['invalid_option_selected_by_username'])
         target = "@" + input(wh+"\ntelesploit("+re+"scrapImages/"+a+wh+") > @")
 
-    print(gr+'\n[+] Fetching Photos...'+wh)
+    print(gr+f'\n[+] {lang["fetching_images"]}'+wh)
     time.sleep(1)
-    print(gr+'[+] Saving In file...'+wh)
+    print(gr+f'[+] {lang["saving_in_file"]}'+wh)
 
 
     _target = ""
@@ -57,3 +57,4 @@ async def scrap_images():
         async for message in client.iter_messages(int(target), reverse=True):
             if message.photo:
                 await message.download_media('./' + title + '/')
+    print(gr+f'[+] {lang["scrap_images"]}\n' + wh)

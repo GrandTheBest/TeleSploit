@@ -18,7 +18,7 @@ async def scrap_members_channel():
         except:
             continue
 
-    print(gr+'[+] Choose a channel to scrape members :'+re)
+    print(gr+f'[+] {lang["choose_the_channel"]} :'+re)
     i=0
     for c in channels:
         print(gr+'['+cy+str(i)+gr+']'+cy+' - '+ c.title + wh)
@@ -27,14 +27,15 @@ async def scrap_members_channel():
     target_channel=channels[int(c_index)]
 
     try:
-        print(gr+'[+] Fetching Members...'+wh)
+        print(gr+f'[+] {lang["fetching_members"]}'+wh)
         time.sleep(1)
         all_participants = []
         all_participants = await client.get_participants(target_channel, aggressive=True)
     except ChatAdminRequiredError:
-        print(re+"Error: you're not admin!"+wh)
+        print(re+lang['not_admin']+wh)
+        return 0
         
-    print(gr+'[+] Saving In file...'+wh)
+    print(gr+f'[+] {lang["saving_in_file"]}'+wh)
     time.sleep(1)
     with open(f"{target_channel.title}.csv","w",encoding='UTF-8') as f:
         writer = csv.writer(f,delimiter=",",lineterminator="\n")
@@ -54,4 +55,4 @@ async def scrap_members_channel():
                 last_name= ""
             name= (first_name + ' ' + last_name).strip()
             writer.writerow([username,user.id,user.access_hash,name,target_channel.title, target_channel.id])      
-    print(gr+'[+] Members scraped successfully.' + wh)
+    print(gr+f'[+] {lang["scrap_members"]}' + wh)

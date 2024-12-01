@@ -18,7 +18,7 @@ async def scrap_members_group():
         except:
             continue
 
-    print(gr+'[+] Choose a group to scrape members :'+re)
+    print(gr+f'[+] {lang["choose_the_group"]} :'+re)
     i=0
     for g in groups:
         print(gr+'['+cy+str(i)+gr+']'+cy+' - '+ g.title + wh)
@@ -26,12 +26,12 @@ async def scrap_members_group():
     g_index = input("\ntelesploit("+re+"scrapMembers/group"+wh+") > ")
     target_group=groups[int(g_index)]
 
-    print(gr+'[+] Fetching Members...')
+    print(gr+f'[+] {lang["fetching_messages"]}')
     time.sleep(1)
     all_participants = []
     all_participants = await client.get_participants(target_group, aggressive=True)
         
-    print(gr+'[+] Saving In file...')
+    print(gr+f'[+] {lang["saving_in_file"]}')
     time.sleep(1)
     with open(f"{target_group.title}.csv","w",encoding='UTF-8') as f:
         writer = csv.writer(f,delimiter=",",lineterminator="\n")
@@ -51,4 +51,4 @@ async def scrap_members_group():
                 last_name= ""
             name= (first_name + ' ' + last_name).strip()
             writer.writerow([username,user.id,user.access_hash,name,target_group.title, target_group.id])      
-    print(gr+'[+] Members scraped successfully.' + wh)
+    print(gr+f'[+] {lang["scrap_members"]}' + wh)

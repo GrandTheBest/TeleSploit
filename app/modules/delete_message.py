@@ -12,7 +12,7 @@ async def delete_message():
         print(f"{gr}[{cy}{i}{gr}] {chat.title}{wh}")
         i += 1
     
-    print(f"\n{wh}Choose the dialog.")
+    print(f"\n{wh}{lang['choose_the_dialog']}")
     dialog = input(wh+"\ntelesploit("+re+"deleteMessage/"+wh+") > ")
     
     async for message in client.iter_messages(chats[int(dialog)], reverse=True):
@@ -24,9 +24,9 @@ async def delete_message():
         is_reply = ""
 
         if message.is_reply:
-            is_reply = f"{gr}Is reply!{wh}"
+            is_reply = f"{gr}{lang['is_reply']}!{wh}"
         else:
-            is_reply = f"{re}Not reply!{wh}"
+            is_reply = f"{re}{lang['not_reply']}!{wh}"
         try:
             from_user = await client.get_entity(message.from_id.user_id)
             ID = message.from_id.user_id
@@ -40,11 +40,11 @@ async def delete_message():
                 print(f"{gr}[{cy}{i}{gr}] {cy}@{re}None{cy}({re}None{cy}): {gr}{message.text}{wh}. {date}. {is_reply}")
         i += 1
     
-    print(f"\n{wh}Choose the message.")
+    print(f"\n{wh}{lang['choose_the_message']}.")
 
     message = input(wh+"\ntelesploit("+re+"deleteMessage/"+wh+") > ")
 
-    print("\nRemove for everyone? Yes or No. Default: No")
+    print(f"\n{lang['remove_for_everyone']}")
     isRevoke = input(wh+"\ntelesploit("+re+"deleteMessage/removeForEveryone"+wh+") > ")
 
     if isRevoke.lower() == "yes":
@@ -52,4 +52,4 @@ async def delete_message():
     else:
         await client.delete_messages(chats[int(dialog)].id, messages[int(message)].id, revoke=False)
 
-    print(f"\n{gr}Message successfuly removed!{wh}\n")
+    print(f"\n{gr}{lang['message_removed']}{wh}\n")

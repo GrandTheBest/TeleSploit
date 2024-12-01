@@ -7,14 +7,15 @@ def banner():
     print(re)
     tprint(toolname)
     print(wh)
-    print(subscription)
+    print(lang['subscription'])
     print(f"{cy}{version}{wh}\n")
-    print(f"{re}By @GrandTheBest{wh}\n")
-    print("Select option \n")
+    print(f"{re}By @GrandTheBest{wh}")
+    print(f"{lang['change_language']}{wh}\n")
+    print(lang['select_option'] + "\n")
 
     i = 0
 
-    for option in options:
+    for option in lang['options']:
         print(gr+'['+cy+str(i)+gr+'] ' + option)
         i+=1
     print(wh)
@@ -32,6 +33,8 @@ async def main():
         s = input(prompt)
 
         if s != "":
+            if s == "/lang":
+                change_lang()
             if int(s) == 0:
                 banner()
                 await test_connection()

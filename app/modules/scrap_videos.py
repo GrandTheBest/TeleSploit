@@ -4,7 +4,7 @@ async def scrap_videos():
     _messages = []
     _dialogs = []
 
-    print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+    print(wh+f'{lang["select_mode"]}:\n\n'+gr+'['+cy+'0'+gr+'] ' + f"{lang['by_username']}\n"+gr+'['+cy+'1'+gr+'] '+lang['by_id']+wh)
 
     mode = input(wh+"\ntelesploit("+re+"scrapVideos"+wh+") > ")
 
@@ -16,12 +16,12 @@ async def scrap_videos():
         target = input(wh+"\ntelesploit("+re+"scrapVideos/"+a+wh+") > ")
     else:
         a = "username"
-        print("Invalid option. Selected by username")
+        print(lang['invalid_option_selected_by_username'])
         target = "@" + input(wh+"\ntelesploit("+re+"scrapVideos/"+a+wh+") > @")
 
-    print(gr+'\n[+] Fetching Videos...'+wh)
+    print(gr+f'\n[+] {lang["fetching_videos"]}'+wh)
     time.sleep(1)
-    print(gr+'[+] Saving In file...'+wh)
+    print(gr+f'[+] {lang["saving_in_file"]}'+wh)
 
     _target = ""
     title = ""
@@ -56,3 +56,4 @@ async def scrap_videos():
         async for message in client.iter_messages(int(target), reverse=True):
             if message.video:
                 await message.download_media('./' + title + '/')
+    print(gr+f'[+] {lang["scrap_videos"]}\n' + wh)

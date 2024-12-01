@@ -11,9 +11,9 @@ async def delete_chat():
         print(f"{gr}[{cy}{i}{gr}] {chat.title}{wh}")
         i += 1
     
-    print(f"\n{wh}Choose the dialog.")
+    print(f"\n{wh}{lang['choose_the_dialog']}")
     dialog = input(wh+"\ntelesploit("+re+"deleteChat/"+wh+") > ")
-    print("\nRemove for everyone? Yes or No. Default: No")
+    print(f"\n{lang['remove_for_everyone']}")
     isRevoke = input(wh+"\ntelesploit("+re+"deleteChat/removeForEveryone"+wh+") > ")
 
     if isRevoke.lower() == "yes":
@@ -21,4 +21,4 @@ async def delete_chat():
     else:
         await client.delete_dialog(chats[int(dialog)].id, revoke=False)
 
-    print(f"\n{gr}Dialog successfuly removed!{wh}\n")
+    print(f"\n{gr}{lang['dialog_removed']}{wh}\n")

@@ -3,7 +3,7 @@ from vendor.misc import *
 async def realtime_messenger():
     _messages = []
 
-    print(wh+'Select mode:\n\n'+gr+'['+cy+'0'+gr+'] ' + "By username\n"+gr+'['+cy+'1'+gr+'] '+'By ID'+wh)
+    print(wh+f'{lang["select_mode"]}:\n\n'+gr+'['+cy+'0'+gr+'] ' + f"{lang['by_username']}\n"+gr+'['+cy+'1'+gr+'] '+lang['by_id']+wh)
 
     mode = input(wh+"\ntelesploit("+re+"RealTimeMessenger"+wh+") > ")
 
@@ -15,10 +15,10 @@ async def realtime_messenger():
         target = input(wh+"\ntelesploit("+re+"RealTimeMessenger/"+a+wh+") > ")
     else:
         a = "username"
-        print("Invalid option. Selected by username")
+        print(lang['invalid_option_selected_by_username'])
         target = "@" + input(wh+"\ntelesploit("+re+"RealTimeMessenger/"+a+wh+") > @")
 
-    print(gr+'\n[+] Fetching Messages...'+wh)
+    print(gr+f'\n[+] {lang["fetching_messages"]}'+wh)
     time.sleep(1)
 
     _target = ""
@@ -35,9 +35,9 @@ async def realtime_messenger():
             is_reply = ""
 
             if message.is_reply:
-                is_reply = f"{gr}Is reply!{wh}"
+                is_reply = f"{gr}{lang['is_reply']}!{wh}"
             else:
-                is_reply = f"{re}Not reply!{wh}"
+                is_reply = f"{re}{lang['not_reply']}!{wh}"
             try:
                 from_user = await client.get_entity(message.from_id.user_id)
                 ID = message.from_id.user_id
