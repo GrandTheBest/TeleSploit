@@ -68,5 +68,6 @@
         "scam": "Scam",
         "color": "Color",
         "profile_color": "Profile Color"
-    }
+    },
+    "except": "Except!"
 }

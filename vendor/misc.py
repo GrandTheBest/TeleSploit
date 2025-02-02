@@ -7,7 +7,7 @@ import time
 
 from telethon import TelegramClient
 from telethon.tl.functions.messages import GetDialogsRequest
-from telethon.tl.types import InputPeerEmpty, InputPeerUser
+from telethon.tl.types import InputPeerEmpty, InputPeerUser, User
 from telethon.errors.rpcerrorlist import ChatAdminRequiredError
 
 re="\033[1;31m"

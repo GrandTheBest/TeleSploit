@@ -1,2 +1,4 @@
 cache.session
 cache.session-journal
+__pycache__/
+.idea/
