@@ -16,7 +16,8 @@
         "Delete message",
         "About me",
         "About user",
-        "Download profile photo"
+        "Download profile photo",
+        "Spammer"
     ],
     "change_language": "To change language enter: /lang",
     "lang_changed": "Language changed successfuly",
@@ -56,6 +57,9 @@
     "choose_the_channel": "Choose a channel to scrape members",
     "choose_the_group": "Choose a group to scrape members",
     "enter_message": "Enter message",
+    "enter_delay": "Enter delay",
+    "enter_count_iterations": "Enter iterations count",
+    "spammer_started": "Spammer is started!",
     "message_sended": "Message sended successfully to",
     "about": {
         "first_name": "First Name",
@@ -69,5 +73,6 @@
         "color": "Color",
         "profile_color": "Profile Color"
     },
-    "except": "Except!"
+    "except": "Except!",
+    "done": "Success!"
 }

@@ -12,6 +12,7 @@ from app.modules.delete_message import delete_message
 from app.modules.about_me import about_me
 from app.modules.about_user import about_user
 from app.modules.download_profile_photo import download_profile_photo
+from app.modules.spammer import spammer
 
 # handlers
 from app.handlers.change_lang import change_lang

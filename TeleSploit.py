@@ -77,9 +77,11 @@ async def main():
             elif int(s) == 13:
                 banner()
                 await download_profile_photo()
+            elif int(s) == 14:
+                await spammer()
             else:
                 banner()
-                print("\nInvalid option\n")
+                print("Invalid option\n")
                 
 
 with client:
