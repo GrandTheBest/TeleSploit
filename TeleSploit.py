@@ -79,6 +79,8 @@ async def main():
                 await download_profile_photo()
             elif int(s) == 14:
                 await spammer()
+            elif int(s) == 15:
+                await circlesploit()
             else:
                 banner()
                 print("Invalid option\n")

@@ -17,7 +17,8 @@
         "About me",
         "About user",
         "Download profile photo",
-        "Spammer"
+        "Spammer",
+        "CircleSploit(Beta)"
     ],
     "change_language": "To change language enter: /lang",
     "lang_changed": "Language changed successfuly",
@@ -59,6 +60,7 @@
     "enter_message": "Enter message",
     "enter_delay": "Enter delay",
     "enter_count_iterations": "Enter iterations count",
+    "enter_full_path": "Enter full path to file",
     "spammer_started": "Spammer is started!",
     "message_sended": "Message sended successfully to",
     "about": {
