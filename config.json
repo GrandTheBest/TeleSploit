@@ -1,7 +1,7 @@
 {
     "name": "OpenTSP",
     "author": "GrandTheBest",
-    "version": "Release v1.7.3: Languages Update!",
+    "version": "Release v1.7.4: Languages Update!",
     "repo": "https://github.com/GrandTheBest/TeleSploit",
     "app": {
         "config": {
@@ -40,7 +40,8 @@
             "About user": "about_user",
             "Download profile photo": "download_profile_photo",
             "Spammer": "spammer",
-            "CircleSploit(Beta)": "circlesploit"
+            "CircleSploit(Beta)": "circlesploit",
+            "Sessions": "sessions"
         }
     }
 }

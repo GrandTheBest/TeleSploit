@@ -81,6 +81,8 @@ async def main():
                 await spammer()
             elif int(s) == 15:
                 await circlesploit()
+            elif int(s) == 16:
+                await sessions()
             else:
                 banner()
                 print("Invalid option\n")

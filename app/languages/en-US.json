@@ -18,7 +18,8 @@
         "About user",
         "Download profile photo",
         "Spammer",
-        "CircleSploit(Beta)"
+        "CircleSploit(Beta)",
+        "Sessions"
     ],
     "change_language": "To change language enter: /lang",
     "lang_changed": "Language changed successfuly",
